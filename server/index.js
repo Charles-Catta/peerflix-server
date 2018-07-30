@@ -4,21 +4,36 @@ var rangeParser = require('range-parser'),
   pump = require('pump'),
   _ = require('lodash'),
   express = require('express'),
+  basicAuth = require('express-basic-auth'),
   multipart = require('connect-multiparty'),
+  morgan = require('morgan'),
   fs = require('fs'),
   store = require('./store'),
   progress = require('./progressbar'),
   stats = require('./stats'),
   api = express();
 
+// api.use(basicAuth({
+//   users: {'flixyUser': process.env.PASSWORD},
+//   challenge: true,
+//   unauthorizedResponse: getUnauthorizedResponse
+// }))
+
 api.use(express.json());
-api.use(express.logger('dev'));
+api.use(morgan('combined'));
 api.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'pireflix.ml');
   res.header('Access-Control-Allow-Methods', 'OPTIONS, POST, GET, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+function getUnauthorizedResponse(req) {
+  console.log("AUTH REJECTED username: ", req.connection.remoteAddress)
+  return req.auth
+      ? ('Fucking rejected')
+      : 'Hell0 Reject'
+}
 
 function serialize(torrent) {
   if (!torrent.torrent) {
