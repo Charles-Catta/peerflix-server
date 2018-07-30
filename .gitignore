@@ -1,6 +1,8 @@
 # Logs
 logs
 *.log
+.env
+package-log.json
 
 # Runtime data
 pids
