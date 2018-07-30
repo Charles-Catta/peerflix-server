@@ -1,24 +1,11 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a href="">Torrents</a></li>
-    <li>
-      <a href="https://github.com/asapach/peerflix-server" target="_blank">
-        <i class="fa fa-github"></i> About</a>
-    </li>
-  </ul>
-  <h3 class="text-muted text-nowrap"><img src="images/logo.svg" alt="logo" height="40"> peerflix server</h3>
-</div>
-
 <div class="jumbotron" ng-file-drop ng-file-change="upload($files)">
-  <h1>Stream Torrents</h1>
+  <h1>Pireflix.ml</h1>
   <div class="form-group">
     <div class="input-group">
-      <span class="input-group-addon">torrent:</span>
       <input type="text" class="form-control" placeholder="Torrent or magnet link" ng-model="link" ng-keypress="keypress($event)">
     </div>
   </div>
   <a class="btn btn-success" href="" ng-click="download()">
-    <span class="fa fa-cloud-download"></span>
     Download
   </a>
   <p class="text-right">
@@ -28,10 +15,6 @@
       browse to upload
     </span>
   </p>
-</div>
-
-<div ng-if="!torrents.length" class="alert alert-info" role="alert">
-  <i class="fa fa-film"></i> Go get some torrents to watch!
 </div>
 
 <div class="row content">
@@ -89,8 +72,4 @@
       </ul>
     </div>
   </div>
-</div>
-
-<div class="footer">
-  <p><span class="fa fa-heart"></span> peerflix</p>
 </div>

@@ -1,3 +1,4 @@
-# robotstxt.org
+# Fuck outta here'
 
 User-agent: *
+Disallow: /
